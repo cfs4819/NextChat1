@@ -4,7 +4,6 @@ import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import DeleteIcon from "../icons/delete.svg";
@@ -12,10 +11,13 @@ import MaskIcon from "../icons/mask.svg";
 import McpIcon from "../icons/mcp.svg";
 import DragIcon from "../icons/drag.svg";
 import DiscoveryIcon from "../icons/discovery.svg";
+import ResetIcon from "../icons/reload.svg";
 
 import Locale from "../locales";
 
 import { useAppConfig, useChatStore } from "../store";
+
+import { useSyncStore } from "../store/sync";
 
 import {
   DEFAULT_SIDEBAR_WIDTH,
@@ -23,13 +25,12 @@ import {
   MIN_SIDEBAR_WIDTH,
   NARROW_SIDEBAR_WIDTH,
   Path,
-  REPO_URL,
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
 import { isIOS, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
-import { Selector, showConfirm } from "./ui-lib";
+import { Selector, showConfirm, showToast } from "./ui-lib";
 import clsx from "clsx";
 import { isMcpEnabled } from "../mcp/actions";
 
@@ -233,6 +234,11 @@ export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
   const [mcpEnabled, setMcpEnabled] = useState(false);
 
+  const syncStore = useSyncStore();
+  const couldSync = useMemo(() => {
+    return syncStore.cloudSync();
+  }, [syncStore]);
+
   useEffect(() => {
     // 检查 MCP 是否启用
     const checkMcpStatus = async () => {
@@ -336,7 +342,7 @@ export function SideBar(props: { className?: string }) {
                 />
               </Link>
             </div>
-            <div className={styles["sidebar-action"]}>
+            {/* <div className={styles["sidebar-action"]}>
               <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
                 <IconButton
                   aria={Locale.Export.MessageFromChatGPT}
@@ -344,7 +350,24 @@ export function SideBar(props: { className?: string }) {
                   shadow
                 />
               </a>
-            </div>
+            </div> */}
+            {/* 如果 couldSync 为 true，则显示同步按钮，否则不显示 */}
+            {couldSync && (
+              <div className={clsx(styles["sidebar-action"], couldSync)}>
+                <IconButton
+                  icon={<ResetIcon />}
+                  onClick={async () => {
+                    try {
+                      await syncStore.sync();
+                      showToast(Locale.Settings.Sync.Success);
+                    } catch (e) {
+                      showToast(Locale.Settings.Sync.Fail);
+                      console.error("[Sync]", e);
+                    }
+                  }}
+                />
+              </div>
+            )}
           </>
         }
         secondaryAction={
