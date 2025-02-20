@@ -402,6 +402,12 @@ export const useChatStore = createPersistStore(
         get().checkMcpJson(message);
 
         get().summarizeSession(false, targetSession);
+
+        const sessions = get().sessions;
+        const index = sessions.findIndex((s) => s.id === targetSession.id);
+        if (index > 0) {
+          get().moveSession(index, 0);
+        }
       },
 
       async onUserInput(
