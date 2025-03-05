@@ -13,5 +13,20 @@
     "id": "duckduckgolite",
     "name": "DuckDuckGoLiteSearch",
     "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/duckduckgolite/openapi.json"
-  }
+  },
+  {
+    "id": "codeinterpreter",
+    "name": "CodeInterpreter",
+    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/refs/heads/main/plugins/codeinterpreterapi/openapi.json"
+  },
+  {
+    "id": "chatpdfgpt",
+    "name": "ChatPDFGPT",
+    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/refs/heads/main/plugins/chatpdf/openapi.json"
+  },
+  {
+    "id": "jinaurlcontentreader",
+    "name": "Jina URL Content Reader",
+    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/refs/heads/main/plugins/jina-r/openapi.json"
+  }  
 ]
