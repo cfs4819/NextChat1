@@ -347,6 +347,25 @@ export function showPlugins(provider: ServiceProvider, model: string) {
   if (provider == ServiceProvider.Google && !model.includes("vision")) {
     return true;
   }
+  const siliconFlowModels = [
+    "deepseek-ai/DeepSeek-V2.5",
+    "internlm/internlm2_5-20b-chat",
+    "internlm/internlm2_5-7b-chat",
+    "Pro/internlm/internlm2_5-7b-chat",
+    "Qwen/Qwen2.5-72B-Instruct",
+    "Qwen/Qwen2.5-32B-Instruct",
+    "Qwen/Qwen2.5-14B-Instruct",
+    "Qwen/Qwen2.5-7B-Instruct",
+    "Pro/Qwen/Qwen2.5-7B-Instruct",
+    "THUDM/glm-4-9b-chat",
+    "Pro/THUDM/glm-4-9b-chat",
+  ];
+  if (
+    provider == ServiceProvider.SiliconFlow &&
+    siliconFlowModels.includes(model)
+  ) {
+    return true;
+  }
   return false;
 }
 
