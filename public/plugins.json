@@ -28,5 +28,10 @@
     "id": "jinaurlcontentreader",
     "name": "Jina URL Content Reader",
     "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/refs/heads/main/plugins/jina-r/openapi.json"
+  },
+  {
+    "id": "sfimagegeneration",
+    "name": "SiliconFlow Image Generation API",
+    "schema": "https://raw.githubusercontent.com/cfs4819/NextChat-Awesome-Plugins/refs/heads/main/plugins/KolorsSiliconFlow/openapi.json"
   }  
 ]
