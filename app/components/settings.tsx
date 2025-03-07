@@ -1864,11 +1864,12 @@ export function Settings() {
               type="text"
               value={config.customModels}
               placeholder="model1,model2,model3"
-              onChange={(e) =>
+              onChange={(e) => {
                 config.update(
                   (config) => (config.customModels = e.currentTarget.value),
-                )
-              }
+                );
+                config.update((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
         </List>
@@ -1880,6 +1881,7 @@ export function Settings() {
               const modelConfig = { ...config.modelConfig };
               updater(modelConfig);
               config.update((config) => (config.modelConfig = modelConfig));
+              config.update((config) => (config.lastUpdate = Date.now()));
             }}
           />
         </List>
@@ -1896,6 +1898,7 @@ export function Settings() {
               config.update(
                 (config) => (config.realtimeConfig = realtimeConfig),
               );
+              config.update((config) => (config.lastUpdate = Date.now()));
             }}
           />
         </List>
@@ -1906,6 +1909,7 @@ export function Settings() {
               const ttsConfig = { ...config.ttsConfig };
               updater(ttsConfig);
               config.update((config) => (config.ttsConfig = ttsConfig));
+              config.update((config) => (config.lastUpdate = Date.now()));
             }}
           />
         </List>
