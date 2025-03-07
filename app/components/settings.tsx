@@ -1491,6 +1491,7 @@ export function Settings() {
                 <AvatarPicker
                   onEmojiClick={(avatar: string) => {
                     updateConfig((config) => (config.avatar = avatar));
+                    updateConfig((config) => (config.lastUpdate = Date.now()));
                     setShowEmojiPicker(false);
                   }}
                 />
@@ -1552,6 +1553,7 @@ export function Settings() {
                   (config) =>
                     (config.submitKey = e.target.value as any as SubmitKey),
                 );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
               }}
             >
               {Object.values(SubmitKey).map((v) => (
@@ -1570,6 +1572,7 @@ export function Settings() {
                 updateConfig(
                   (config) => (config.theme = e.target.value as any as Theme),
                 );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
               }}
             >
               {Object.values(Theme).map((v) => (
@@ -1607,12 +1610,13 @@ export function Settings() {
               min="12"
               max="40"
               step="1"
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.fontSize = Number.parseInt(e.currentTarget.value)),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></InputRange>
           </ListItem>
 
@@ -1625,11 +1629,12 @@ export function Settings() {
               type="text"
               value={config.fontFamily}
               placeholder={Locale.Settings.FontFamily.Placeholder}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) => (config.fontFamily = e.currentTarget.value),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
 
@@ -1641,12 +1646,13 @@ export function Settings() {
               aria-label={Locale.Settings.AutoGenerateTitle.Title}
               type="checkbox"
               checked={config.enableAutoGenerateTitle}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.enableAutoGenerateTitle = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
 
@@ -1658,12 +1664,13 @@ export function Settings() {
               aria-label={Locale.Settings.SendPreviewBubble.Title}
               type="checkbox"
               checked={config.sendPreviewBubble}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.sendPreviewBubble = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
 
@@ -1675,12 +1682,13 @@ export function Settings() {
               aria-label={Locale.Mask.Config.Artifacts.Title}
               type="checkbox"
               checked={config.enableArtifacts}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.enableArtifacts = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
           <ListItem
@@ -1692,11 +1700,12 @@ export function Settings() {
               type="checkbox"
               checked={config.enableCodeFold}
               data-testid="enable-code-fold-checkbox"
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) => (config.enableCodeFold = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
         </List>
@@ -1712,13 +1721,14 @@ export function Settings() {
               aria-label={Locale.Settings.Mask.Splash.Title}
               type="checkbox"
               checked={!config.dontShowMaskSplashScreen}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.dontShowMaskSplashScreen =
                       !e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
 
@@ -1730,12 +1740,13 @@ export function Settings() {
               aria-label={Locale.Settings.Mask.Builtin.Title}
               type="checkbox"
               checked={config.hideBuiltinMasks}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.hideBuiltinMasks = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
         </List>
@@ -1749,12 +1760,13 @@ export function Settings() {
               aria-label={Locale.Settings.Prompt.Disable.Title}
               type="checkbox"
               checked={config.disablePromptHint}
-              onChange={(e) =>
+              onChange={(e) => {
                 updateConfig(
                   (config) =>
                     (config.disablePromptHint = e.currentTarget.checked),
-                )
-              }
+                );
+                updateConfig((config) => (config.lastUpdate = Date.now()));
+              }}
             ></input>
           </ListItem>
 
