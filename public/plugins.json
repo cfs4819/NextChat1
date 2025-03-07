@@ -33,5 +33,10 @@
     "id": "sfimagegeneration",
     "name": "SiliconFlow Image Generation API",
     "schema": "https://raw.githubusercontent.com/cfs4819/NextChat-Awesome-Plugins/refs/heads/main/plugins/KolorsSiliconFlow/openapi.json"
-  }  
+  },
+  {
+    "id": "tavilysearchnextract",
+    "name": "Tavily Search & Extract",
+    "schema": "https://raw.githubusercontent.com/cfs4819/NextChat-Awesome-Plugins/refs/heads/main/plugins/tavilysearch/openapi.json"
+  }
 ]
