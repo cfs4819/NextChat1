@@ -348,15 +348,27 @@ export function showPlugins(provider: ServiceProvider, model: string) {
     return true;
   }
   const siliconFlowModels = [
+    // deepseek 系列
     "deepseek-ai/DeepSeek-V2.5",
+    "Pro/deepseek-ai/DeepSeek-R1",
+    "deepseek-ai/DeepSeek-R1",
+    "Pro/deepseek-ai/DeepSeek-V3",
+    "deepseek-ai/DeepSeek-V3",
+
+    // 书生系列
     "internlm/internlm2_5-20b-chat",
     "internlm/internlm2_5-7b-chat",
     "Pro/internlm/internlm2_5-7b-chat",
+
+    // Qwen系列
+    "Qwen/QwQ-32B",
     "Qwen/Qwen2.5-72B-Instruct",
     "Qwen/Qwen2.5-32B-Instruct",
     "Qwen/Qwen2.5-14B-Instruct",
     "Qwen/Qwen2.5-7B-Instruct",
     "Pro/Qwen/Qwen2.5-7B-Instruct",
+
+    // GLM系列
     "THUDM/glm-4-9b-chat",
     "Pro/THUDM/glm-4-9b-chat",
   ];
